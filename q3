@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class Q3_TrafficSignalAnalyzer {
+
+    static void findLongestStreak(String signalLog) {
+
+        char maxChar = signalLog.charAt(0);
+        int max = 1;
+        int count = 1;
+
+        for (int i = 1; i < signalLog.length(); i++) {
+
+            if (signalLog.charAt(i) == signalLog.charAt(i - 1)) {
+
+                count++;
+
+                if (count > max) {
+                    max = count;
+                    maxChar = signalLog.charAt(i);
+                }
+
+            } else {
+                count = 1;
+            }
+        }
+
+        System.out.println("Longest Streak: '" + maxChar + "' repeated " + max + " times");
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Signal Log: ");
+        String signal = sc.nextLine();
+
+        findLongestStreak(signal);
+    }
+}
